@@ -6,7 +6,7 @@
       <input
         ref="first"
         type="text"
-        v-bind:class="{ 'has-error': submitting && invalidName }"
+        :class="{ 'has-error': submitting && invalidName }"
         v-model="employee.name"
         @focus="clearStatus"
         @keypress="clearStatus"
@@ -14,7 +14,7 @@
       <label>Employee position</label>
       <input
         type="text"
-        v-bind:class="{ 'has-error': submitting && invalidPosition }"
+        :class="{ 'has-error': submitting && invalidPosition }"
         v-model="employee.position"
         @focus="clearStatus"
       >

@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr
-          v-bind:key="employee.id"
+          :key="employee.id"
           v-for="employee in employees"
         >
           <td v-if="editing === employee.id">
@@ -54,9 +54,9 @@
 <script>
 export default {
   name: 'employee-table',
-  props: [
-    'employees'
-  ],
+  props: {
+    employees: Array,
+  },
   data() {
     return {
       editing: null,
