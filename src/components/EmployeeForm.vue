@@ -11,11 +11,11 @@
         @focus="clearStatus"
         @keypress="clearStatus"
       >
-      <label>Employee position</label>
+      <label>Employee Email</label>
       <input
         type="text"
-        :class="{ 'has-error': submitting && invalidPosition }"
-        v-model="employee.position"
+        :class="{ 'has-error': submitting && invalidEmail }"
+        v-model="employee.email"
         @focus="clearStatus"
       >
       <p
@@ -42,7 +42,7 @@ export default {
       success: false,
       employee: {
         name: '',
-        position: '',
+        email: '',
       }
     }
   },
@@ -51,8 +51,8 @@ export default {
       return this.employee.name === ''
     },
 
-    invalidPosition() {
-      return this.employee.position === ''
+    invalidEmail() {
+      return this.employee.email === ''
     },
   },
   methods: {
@@ -60,7 +60,7 @@ export default {
       this.clearStatus()
       this.submitting = true
 
-      if (this.invalidName || this.invalidPosition) {
+      if (this.invalidName || this.invalidEmail) {
         this.error = true
         return
       }
@@ -69,7 +69,7 @@ export default {
       this.$refs.first.focus()
       this.employee = {
         name: '',
-        position: '',
+        email: '',
       }
       this.clearStatus()
       this.submitting = false

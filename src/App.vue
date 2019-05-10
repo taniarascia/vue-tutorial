@@ -3,12 +3,12 @@
     id="app"
     class="small-container"
   >
-    <h1>Pied Piper Employees</h1>
+    <h1>Employees</h1>
 
     <employee-form @add:employee="addEmployee" />
     <employee-table
       :employees="employees"
-      @remove:employee="removeEmployee"
+      @delete:employee="deleteEmployee"
       @edit:employee="editEmployee"
     />
   </div>
@@ -26,46 +26,62 @@ export default {
   },
   data() {
     return {
-      employees: [
-        {
-          id: 1,
-          name: 'Richard Henricks',
-          position: 'CEO',
-        },
-        {
-          id: 2,
-          name: 'Erlich Bachmann',
-          position: 'Entrepreneur',
-        },
-        {
-          id: 3,
-          name: 'Bertram Gilfoyle',
-          position: 'DevOps',
-        },
-        {
-          id: 4,
-          name: 'Dinesh Chugtai',
-          position: 'Programmer',
-        },
-      ]
+      employees: []
     }
   },
-  
+
+  mounted() {
+    this.getEmployees()
+  },
+
   methods: {
-    addEmployee(employee) {
-      const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0
-      const id = lastId + 1
-      const newEmployee = { ...employee, id }
-
-      this.employees = [...this.employees, newEmployee]
+    async getEmployees() {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const data = await response.json()
+        this.employees = data
+      } catch (error) {
+        console.error(error)
+      }
     },
 
-    editEmployee(id, updatedEmployee) {
-      this.employees = this.employees.map(employee => employee.id === id ? updatedEmployee : employee)
+    async addEmployee(employee) {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'POST',
+          body: JSON.stringify(employee),
+          headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+        const data = await response.json()
+        this.employees = [...this.employees, data]
+      } catch (error) {
+        console.error(error)
+      }
     },
 
-    removeEmployee(id) {
-      this.employees = this.employees.filter(employee => employee.id !== id)
+    async editEmployee(id, updatedEmployee) {
+      try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify(updatedEmployee),
+          headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+        const data = await response.json()
+        this.employees = this.employees.map(employee => employee.id === id ? data : employee)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async deleteEmployee(id) {
+      try {
+        await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+          method: 'DELETE'
+        })
+        this.employees = this.employees.filter(employee => employee.id !== id)
+      } catch (error) {
+        console.error(error)
+      }
     },
   },
 }
