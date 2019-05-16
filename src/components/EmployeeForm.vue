@@ -71,7 +71,8 @@ export default {
         name: '',
         email: '',
       }
-      this.clearStatus()
+      this.success = true
+      this.error = false
       this.submitting = false
     },
 
