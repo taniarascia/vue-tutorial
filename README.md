@@ -1,5 +1,7 @@
 # Vue Tutorial
 
+### [Read the Tutorial](https://taniarascia.com/getting-started-with-vue) | [View the Demo](https://taniarascia.github.io/vue-tutorial)
+
 We're going to create a small application with Vue. The app will be a simple employee database and we'll learn:
 
 - How to set up Vue
@@ -9,10 +11,6 @@ We're going to create a small application with Vue. The app will be a simple emp
 - How to make API calls for each of the above actions
 - How to use tables, forms, and form validation
 - How to host a Vue build on GitHub pages
-
-### [Read the Tutorial](https://taniarascia.com/getting-started-with-vue)
-
-### [View the Demo](https://taniarascia.github.io/tutorial)
 
 ## Installation
 
