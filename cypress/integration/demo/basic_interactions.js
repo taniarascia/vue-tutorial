@@ -23,7 +23,7 @@ context('basic interactions scenarios', () => {
         cy.contains('Employee successfully added')
     })
 
-    it.only('stub response', () => {
+    it('stub response', () => {
         let mockUser = [
             {
                 "id": 1,

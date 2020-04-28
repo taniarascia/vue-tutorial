@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
-context('wait for XHR scenarios', () => {
+context('stub responses', () => {
 
     beforeEach(() => {
 
     })
 
-    it.only('wait for a POST', () => {
+    it.only('stub a comment object', () => {
         let message = 'the fox jumped over the lazzy dog'
         let commentObject = {
             "postId": 1,
