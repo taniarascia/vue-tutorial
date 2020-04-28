@@ -21,6 +21,10 @@ workflows:
           record: true
           tags: '#chrome73,#cci'
           store_artifacts: true
+          filters:
+            branches:
+              only:
+                pull_request: true
       - cypress/run:
           name: Test on Firefox 68
           requires:
@@ -32,6 +36,10 @@ workflows:
           record: true
           tags: '#firefox68,#cci'
           store_artifacts: true
+          filters:
+            branches:
+              only:
+                pull_request: true
       - cypress/run:
           name: Test on Electron/Mac
           requires:
@@ -42,4 +50,9 @@ workflows:
           record: true
           tags: '#electron,#cci'
           store_artifacts: true
+          filters:
+            branches:
+              only:
+                pull_request: true
+
 
