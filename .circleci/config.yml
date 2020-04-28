@@ -5,7 +5,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          name: Test on Chrome 73
+          name: "Test on Chrome 73"
           executor: "browsers-chrome73-ff68"
           browser: chrome
           build: npm run build
