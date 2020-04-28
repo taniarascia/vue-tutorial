@@ -8,5 +8,5 @@ workflows:
           build: "npm run build"
       - cypress/run:
           record: true
-          parallel: false
+          parallel: true
           parallelism: 10
