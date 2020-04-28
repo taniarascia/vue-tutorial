@@ -5,7 +5,6 @@ workflows:
   build:
     jobs:
       - cypress/install:
-          name: Build Vue app
           build: "npm run build"
       - cypress/run:
           name: Test on Chrome 73
