@@ -5,4 +5,5 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          build: "npm run serve &"
+          build: "npm run build"
+          start: "npm run serve"
