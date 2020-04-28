@@ -7,7 +7,7 @@ context('Actions', () => {
         cy.visit('http://localhost:8080/')
     })
 
-    it('Add a new employee 1', () => {
+    it('Add a new employee', () => {
         let employee_name = faker.name.findName();
         let employee_email = faker.internet.email()
         let success_message = "Employee successfully added"
