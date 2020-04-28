@@ -10,7 +10,7 @@ context('new employee test scenarios', () => {
     })
 
     it('Verify success message when adding a new employee', () => {
-        cy.visit('https://localhost:8080/')
+        cy.visit('http://localhost:8080/')
         let success_message = "Employee successfully added"
         cy.get('#employee-name-txt').type(employeeName)
         cy.get('#employee-email-txt').type(employeeEmail)
@@ -19,7 +19,7 @@ context('new employee test scenarios', () => {
     })
 
     it('Verify new employee is listed', () => {
-        cy.visit('https://localhost:8080/')
+        cy.visit('http://localhost:8080/')
         cy.server();
         cy.route('POST', '/users').as('usersRequest')
         let successMessage = "Employee successfully added"
