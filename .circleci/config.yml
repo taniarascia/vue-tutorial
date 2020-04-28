@@ -4,26 +4,11 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install:
-          - build: npm run build
       - cypress/run:
           name: Test on Chrome 73
-          requires:
-            - cypress/install
           executor: "browsers-chrome73-ff68"
           browser: chrome
-          start: "npm run serve"
-          wait-on: 'http://localhost:8080'
-          record: true
-          filters:
-            branches:
-            pull_request: true
-      - cypress/run:
-          name: Test on Firefox 68
-          requires:
-            - cypress/install
-          executor: "browsers-chrome73-ff68"
-          browser: firefox
+          build: npm run build
           start: "npm run serve"
           wait-on: 'http://localhost:8080'
           record: true
