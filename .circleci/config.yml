@@ -4,7 +4,7 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install
+      - cypress/install:
       - cypress/run:
           name: Test on Chrome 73
           requires:
