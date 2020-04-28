@@ -18,7 +18,7 @@ context('new employee test scenarios', () => {
         cy.contains(success_message)
     })
 
-    it.only('Verify new employee is listed', () => {
+    it('Verify new employee is listed', () => {
         cy.visit('https://localhost:8080/')
         cy.server();
         cy.route('POST', '/users').as('usersRequest')
