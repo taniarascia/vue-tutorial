@@ -21,6 +21,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11",
     "cypress": "^4.4.1",
+    "cypress-xpath": "^1.4.0",
     "uuid": "^7.0.3",
     "faker": "^4.1.0"
   },
