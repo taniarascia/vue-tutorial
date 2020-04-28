@@ -35,7 +35,6 @@ workflows:
           requires:
             - cypress/install
           executor: "mac"
-          browser: firefox
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
