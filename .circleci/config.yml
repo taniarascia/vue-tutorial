@@ -19,6 +19,7 @@ workflows:
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
+          tags: '#chrome73,#cci'
           store_artifacts: true
       - cypress/run:
           name: Test on Firefox 68
@@ -29,14 +30,16 @@ workflows:
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
+          tags: '#firefox68,#cci'
           store_artifacts: true
       - cypress/run:
-          name: Test on Mac
+          name: Test on Electron/Mac
           requires:
             - cypress/install
           executor: "mac"
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
+          tags: '#electron,#cci'
           store_artifacts: true
 
