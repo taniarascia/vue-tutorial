@@ -20,8 +20,8 @@ workflows:
             pull_request: true
       - cypress/run:
           name: Test on Firefox 68
-            requires:
-              - cypress/install
+          requires:
+            - cypress/install
           executor: "browsers-chrome73-ff68"
           browser: firefox
           build: "npm run build"
