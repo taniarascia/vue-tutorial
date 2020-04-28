@@ -1,28 +1,11 @@
-#version: 2.1
-#orbs:
-#  cypress: cypress-io/cypress@1.20.0
-#workflows:
-#  build:
-#    jobs:
-#      - cypress/install:
-#          build: npm run build
-#      - cypress/run:
-#          name: "Test on Chrome 73"
-#          executor: "browsers-chrome73-ff68"
-#          browser: chrome
-#          start: "npm run serve"
-#          wait-on: 'http://localhost:8080'
-#          record: true
-#          filters:
-#            branches:
-#            pull_request: true
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.20.0
 workflows:
-  build:
+  build_and_test:
     jobs:
       - cypress/install:
+          name: Build Vue app
           build: "npm run build"
       - cypress/run:
           name: Test on Chrome 73
