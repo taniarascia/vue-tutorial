@@ -5,13 +5,13 @@ workflows:
   build:
     jobs:
       - cypress/install:
+          - build: npm run build
       - cypress/run:
           name: Test on Chrome 73
           requires:
             - cypress/install
           executor: "browsers-chrome73-ff68"
           browser: chrome
-          build: "npm run build"
           start: "npm run serve"
           wait-on: 'http://localhost:8080'
           record: true
@@ -24,7 +24,6 @@ workflows:
             - cypress/install
           executor: "browsers-chrome73-ff68"
           browser: firefox
-          build: "npm run build"
           start: "npm run serve"
           wait-on: 'http://localhost:8080'
           record: true
