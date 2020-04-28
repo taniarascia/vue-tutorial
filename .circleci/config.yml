@@ -25,6 +25,8 @@ workflows:
       - cypress/install:
           build: "npm run build"
       - cypress/run:
+          requires:
+            - cypress/install
           executor: "cypress/browsers-chrome73-ff68"
           browser: chrome
           start: "npm run serve"
