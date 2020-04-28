@@ -22,8 +22,12 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run:
+      - cypress/install:
           build: "npm run build"
+      - cypress/run:
+          executor: "browsers-chrome73-ff68"
+          browser: chrome
           start: "npm run serve"
           wait-on: 'http://localhost:8080'
           record: true
+
