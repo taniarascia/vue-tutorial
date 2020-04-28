@@ -37,7 +37,7 @@ workflows:
           requires:
             - cypress/install
           executor: "mac"
-          start: "npm run serve"
+          start: "npm run serve --https"
           wait-on: "http://localhost:8080"
           record: true
           tags: '#electron,#cci'

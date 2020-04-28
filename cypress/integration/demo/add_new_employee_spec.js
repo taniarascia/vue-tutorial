@@ -1,20 +1,33 @@
 /// <reference types="cypress" />
-import { v4 as uuidv4 } from 'uuid';
 const faker = require('faker');
 
-context('Actions', () => {
+context('new employee test scenarios', () => {
+    const employeeName = faker.name.findName()
+    const employeeEmail = faker.internet.email()
+
     beforeEach(() => {
-        cy.visit('http://localhost:8080/')
+
     })
 
-    it('Add a new employee', () => {
-        let employee_name = faker.name.findName();
-        let employee_email = faker.internet.email()
+    it('Verify success message when adding a new employee', () => {
+        cy.visit('https://localhost:8080/')
         let success_message = "Employee successfully added"
-        cy.get('#employee-name-txt').type(employee_name);
-        cy.get('#employee-email-txt').type(employee_email)
+        cy.get('#employee-name-txt').type(employeeName)
+        cy.get('#employee-email-txt').type(employeeEmail)
         cy.get('#add-employee-btn').click()
         cy.contains(success_message)
-        //cy.get('tr').eq(-1).find('td').eq(0).should('contain', employee_name)
+    })
+
+    it.only('Verify new employee is listed', () => {
+        cy.visit('https://localhost:8080/')
+        cy.server();
+        cy.route('POST', '/users').as('usersRequest')
+        let successMessage = "Employee successfully added"
+        cy.get('#employee-name-txt').type(employeeName)
+        cy.get('#employee-email-txt').type(employeeEmail)
+        cy.get('#add-employee-btn').click()
+        cy.contains(successMessage)
+        cy.wait('@usersRequest').its('status').should('eq', 201)
+        cy.get('tr').eq(-1).find('td').eq(0).should('contain', employeeName)
     })
 })

@@ -1,3 +1,5 @@
 {
-  "projectId": "8e41pv"
+  "projectId": "8e41pv",
+  "requestTimeout": 40000,
+  "responseTimeout": 40000
 }
