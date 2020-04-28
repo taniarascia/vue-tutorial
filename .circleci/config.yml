@@ -1,6 +1,10 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.20.0
+executors:
+  mac:
+    macos:
+      xcode: 10.1.0
 workflows:
   build_and_test:
     jobs:
@@ -15,6 +19,7 @@ workflows:
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
+          store_artifacts: true
       - cypress/run:
           name: Test on Firefox 68
           requires:
@@ -24,4 +29,15 @@ workflows:
           start: "npm run serve"
           wait-on: "http://localhost:8080"
           record: true
+          store_artifacts: true
+      - cypress/run:
+          name: Test on Mac
+          requires:
+            - cypress/install
+          executor: "mac"
+          browser: firefox
+          start: "npm run serve"
+          wait-on: "http://localhost:8080"
+          record: true
+          store_artifacts: true
 
