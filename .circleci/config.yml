@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.20.0
 workflows:
-  build:
+  build_and_test:
     jobs:
       - cypress/install:
           build: "npm run build"
