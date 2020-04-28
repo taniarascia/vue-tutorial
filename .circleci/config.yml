@@ -1,7 +1,12 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1.0.0
+  cypress: cypress-io/cypress@1.20.0
 workflows:
   build:
     jobs:
-      - cypress/run
+      - cypress/install:
+          build: "npm run build"
+      - cypress/run:
+          record: true
+          parallel: true
+          parallelism: 10
