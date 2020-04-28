@@ -6,7 +6,7 @@ workflows:
     jobs:
       - cypress/install
       - cypress/run:
-          name: "Test on Chrome 73"
+          name: Test on Chrome 73
           requires:
             - cypress/install
           executor: "browsers-chrome73-ff68"
@@ -19,7 +19,7 @@ workflows:
             branches:
             pull_request: true
       - cypress/run:
-          name: "Test on Chrome 73"
+          name: Test on Firefox 68
             requires:
               - cypress/install
           executor: "browsers-chrome73-ff68"
