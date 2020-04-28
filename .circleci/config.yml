@@ -5,7 +5,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          build: "yarn"
-          start: "yarn serve"
+          build: "npm run build"
+          start: "npm run start"
           wait-on: 'http://localhost:8080'
           record: true
